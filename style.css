@@ -184,6 +184,147 @@ body {
   }
 }
 
+/* HERO SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 650px;
+  height: 85vh;
+  max-height: 950px;
+  overflow: hidden;
+}
+
+/* HERO SLIDE */
+/* .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/bandra_banner.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+} */
+
+/* BLACK GRADIENT AT BOTTOM */
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.3) 35%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* HERO CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 40px 70px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+/* HERO HEADING */
+.hero-content h1 {
+  font-size: clamp(32px, 4vw, 64px);
+  line-height: 1.15;
+  max-width: 850px;
+  margin-bottom: 20px;
+}
+
+/* HERO DESCRIPTION */
+.hero-content p {
+  font-size: clamp(15px, 1.5vw, 20px);
+  line-height: 1.6;
+  max-width: 650px;
+}
+
+/* BUTTONS */
+.hero-content .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* TABLETS */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 550px;
+    height: 75vh;
+  }
+
+  .hero-content {
+    padding: 120px 30px 60px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 580px;
+    max-height: none;
+  }
+
+  /* .hero-slide {
+    background-size: cover;
+    background-position: center;
+  } */
+
+  .hero-slide::after {
+    background: none;
+  }
+
+  .hero-content {
+    padding: 250px 20px 45px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(28px, 7vw, 42px);
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .hero-content .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-content .hero-buttons .btn {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 380px) {
+  .hero {
+    min-height: 530px;
+  }
+
+  .hero-content {
+    padding: 220px 16px 35px;
+  }
+
+  .hero-content h1 {
+    font-size: 27px;
+  }
+}
+
 /* Overlay */
 .overlay {
   position: absolute;
@@ -323,7 +464,7 @@ body {
 
 .hero-content {
     /* position: fixed; */
-    top: 75%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* text-align: center; */
@@ -332,12 +473,12 @@ body {
 }
 
   .hero-content h1 {
-    font-size: 26px;
+    font-size: 22px;
     color: #000;
   }
 
    .hero-content h3 {
-    /* font-size: 28px; */
+    font-size: 15px;
     color: #000;
   }
 
