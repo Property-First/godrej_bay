@@ -6,7 +6,10 @@
   <title>Godrej Bandra Bay, Bandra West Mumbai</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css"
+>
 </head>
 <body>
 
@@ -765,6 +768,8 @@
             <label>Phone Number *</label>
 
             <input type="text"
+            type="tel"
+             class="phone"
                    name="phone"
                    placeholder="+91 XXXXXXXXXX"
                    required>
@@ -941,10 +946,22 @@
           <input type="text" name="name" required>
         </div>
 
-        <div class="form-group">
-          <label>PHONE *</label>
-          <input type="text" name="phone" required>
-        </div>
+        
+
+<div class="form-group">
+  <label for="phone">PHONE *</label>
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    class="phone"
+    placeholder="Enter phone number"
+    autocomplete="tel"
+    required
+  >
+</div>
+
+
 
       </div>
 
@@ -973,5 +990,117 @@
 
 </div>
 <script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("input.phone").forEach(function (phoneInput) {
+
+    // Prevent duplicate initialization
+    if (phoneInput.classList.contains("iti-initialized")) return;
+
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: "in",
+      separateDialCode: true,
+      loadUtils: () =>
+        import(
+          "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+        )
+    });
+
+    phoneInput.classList.add("iti-initialized");
+
+  });
+});
+</script>
+
+<!-- <script>
+  const phoneInput = document.querySelector("#phone");
+
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    nationalMode: true,
+    countryOrder: ["in", "us", "gb", "ae"],
+    loadUtils: () =>
+      import(
+        "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+      )
+  });
+
+  const form = phoneInput.closest("form");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    await iti.promise;
+
+    if (!iti.isValidNumber()) {
+      alert("Please enter a valid phone number for the selected country.");
+      phoneInput.focus();
+      return;
+    }
+
+    
+    phoneInput.value = iti.getNumber();
+
+    form.submit();
+  });
+</script> -->
+
+<script>
+document.querySelectorAll(".phone").forEach(function (phoneInput) {
+
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    loadUtils: () =>
+      import(
+        "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+      )
+  });
+
+  const form = phoneInput.closest("form");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    await iti.promise;
+
+    if (!iti.isValidNumber()) {
+      alert("Please enter a valid phone number for the selected country.");
+      phoneInput.focus();
+      return;
+    }
+
+    
+    phoneInput.value = iti.getNumber();
+
+    
+    form.submit();
+  });
+
+});
+</script>
+
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".phone").forEach(function (input) {
+    window.intlTelInput(input, {
+      initialCountry: "in",
+      separateDialCode: true,
+      loadUtils: () =>
+        import(
+          "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+        )
+    });
+  });
+});
+</script> -->
 </body>
 </html>

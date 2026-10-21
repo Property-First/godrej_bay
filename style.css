@@ -1934,3 +1934,22 @@ h2{
   }
 
 }
+
+
+.iti {
+  display: block;
+  width: 100%;
+}
+
+.iti input[type="tel"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.iti__country-container {
+  z-index: 10;
+}
+
+.iti__country-list {
+  z-index: 9999;
+}
